@@ -10,8 +10,12 @@ module BlogEngine
     def show
       @article = Article.find(params[:id])
       if @article.published == false
-        redirect_to('/blog')
+      	redirect_to('/blog')
       end
+    end
+
+    def new
+      @article = Article.new
     end
   end
 end
