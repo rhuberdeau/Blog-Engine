@@ -21,15 +21,40 @@ describe BlogEngine::ArticlesController do
       @article = BlogEngine::Article.create!(title: "hello world", content: "how are you", published: false)
       get 'show', id: @article.id, use_route: 'blog_engine'
 
-      expect(response).to redirect_to('/blog')
+      expect(response).to redirect_to('/blog/articles')
+    end
+    
+    it "redirects users away from articles where published is nil" do
+      @article = BlogEngine::Article.create!(title: "hello world", content: "how are you", published: nil)
+      get 'show', id: @article.id, use_route: 'blog_engine'
+
+      expect(response).to redirect_to('/blog/articles')
     end
 
-    it "displays published articles" do
+    it "responds with published articles" do
       @article = BlogEngine::Article.create!(title: "hello world", content: "how are you", published: true)
       get 'show', id: @article.id, use_route: 'blog_engine'
 
       expect(response).to be_success
       expect(response.status).to eq(200)
+    end
+  end
+  
+  describe "GET #new" do
+    it "responds with a new article" do
+      @article = BlogEngine::Article.new
+      get 'new', use_route: 'blog_engine'
+      
+      expect(response).to be_success
+      expect(response.status).to eq(200)
+    end
+  end
+  
+  describe "POST #create" do
+    it "redirects to the created account" do
+      #BlogEngine::Article.stub(:new) {mock_article(save: true)}
+      post :create, :article => {title: 'hello', content: "my content"}, use_route: 'blog_engine'
+      flash[:notice].should == "Article has been saved"
     end
   end
 end

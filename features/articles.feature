@@ -15,5 +15,5 @@ Feature: The blog should consists of a list of articles
     Given I visit my blog
     And I click the "New Article" link
     When I fill in the article form
-    And click the "Publish Article" button
+    And click the "Save" button
     Then I should see my new article

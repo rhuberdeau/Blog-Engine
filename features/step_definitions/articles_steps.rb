@@ -27,14 +27,18 @@ Given(/^I click the "(.*?)" link$/) do |link_name|
 end
 
 When(/^I fill in the article form$/) do
-  pending # express the regexp above with the code you wish you had
+  page.fill_in 'article_title', with: "my brand new article"
+  page.fill_in 'article_content', with: "this is the article content"
+  page.check 'article_published'
 end
 
-When(/^click the "(.*?)" button$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
+When(/^click the "(.*?)" button$/) do |button_name|
+  page.click_button(button_name)
 end
 
 Then(/^I should see my new article$/) do
-  pending # express the regexp above with the code you wish you had
+  within('.article') do
+    page.should have_content "this is the article content"
+  end
 end
 
