@@ -4,11 +4,14 @@ module BlogEngine
   class ArticlesController < ApplicationController
     
     def index
-      @articles = Article.all
+      @articles = Article.published
     end
     
     def show
-      
+      @article = Article.find(params[:id])
+      if @article.published == false
+        redirect_to('/blog')
+      end
     end
   end
 end
