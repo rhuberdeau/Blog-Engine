@@ -1,4 +1,4 @@
-<h2><%= article.title %></h2>
+<h2><%=link_to "#{article.title}", blog_engine.article_path(article) %></h2>
 
 <p>
 	<%= article.content %>

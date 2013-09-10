@@ -25,3 +25,11 @@ describe "blog_engine/articles/new" do
     expect(view).to render_template(partial: "_form")
   end
 end
+
+describe "blog_engine/articles/edit" do
+  it "displays a form to edit the article" do
+    assign(:article, stub_model(BlogEngine::Article))
+    render
+    expect(view).to render_template(partial: "_form")
+  end
+end

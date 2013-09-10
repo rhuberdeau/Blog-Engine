@@ -42,3 +42,19 @@ Then(/^I should see my new article$/) do
   end
 end
 
+Given(/^I click the link to an article$/) do
+  page.click_link "hello world"
+end
+
+When(/^I edit my article$/) do
+  page.find("#article_title").click
+  fill_in 'article_title', with: "the edited article title"
+  page.click_button "Save"
+end
+
+Then(/^I should see the edited article$/) do
+  within('.article') do
+    page.should have_selector( 'h1', text: "the edited article title" )
+  end
+end
+

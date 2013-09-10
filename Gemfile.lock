@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    blog_engine (0.0.1)
+    blog_engine (0.0.2)
       rails (~> 4.0.0)
 
 GEM

@@ -17,3 +17,10 @@ Feature: The blog should consists of a list of articles
     When I fill in the article form
     And click the "Save" button
     Then I should see my new article
+
+  Scenario: Users can edit articles
+    Given I visit my blog
+		And I click the link to an article
+		When I click the "Edit" link
+		And I edit my article
+		Then I should see the edited article

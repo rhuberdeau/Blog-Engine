@@ -53,7 +53,23 @@ describe BlogEngine::ArticlesController do
   describe "POST #create" do
     it "redirects to the created account" do
       #BlogEngine::Article.stub(:new) {mock_article(save: true)}
-      post :create, :article => {title: 'hello', content: "my content"}, use_route: 'blog_engine'
+      post :create, :article => {title: 'hello there', content: "my content"}, use_route: 'blog_engine'
+      flash[:notice].should == "Article has been saved"
+    end
+  end
+  
+  describe "GET #edit" do
+    it "responds with the requested article" do
+      @article = BlogEngine::Article.create!(title: "hello creul world", content: "how are you", published: true)
+      get 'edit', id: @article.id, use_route: 'blog_engine'
+      
+      expect(assigns(:article)).to eql(@article)
+    end
+  end
+  
+  describe "POST #update" do
+    it "redirected to the updated article" do
+      post :create, :article => {title: 'hello there', content: "my content"}, use_route: 'blog_engine'
       flash[:notice].should == "Article has been saved"
     end
   end

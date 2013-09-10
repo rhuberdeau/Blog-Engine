@@ -27,6 +27,19 @@ module BlogEngine
       end
     end
     
+    def edit
+      @article = Article.find(params[:id])
+    end
+    
+    def update
+      @article = Article.create(article_params)
+      if @article.save
+        redirect_to(@article, notice: "Article has been saved")
+      else
+        render action: "edit"
+      end
+    end
+    
     private
     
       def article_params
