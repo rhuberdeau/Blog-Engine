@@ -32,7 +32,7 @@ When(/^I fill in the article form$/) do
   page.check 'article_published'
 end
 
-When(/^click the "(.*?)" button$/) do |button_name|
+When(/^I click the "(.*?)" button$/) do |button_name|
   page.click_button(button_name)
 end
 
@@ -55,6 +55,21 @@ end
 Then(/^I should see the edited article$/) do
   within('.article') do
     page.should have_selector( 'h1', text: "the edited article title" )
+  end
+end
+
+Given(/^I visit an article$/) do
+  article = BlogEngine::Article.first
+  visit blog_engine.article_path(article)
+end
+
+Given(/^I create a comment$/) do
+  fill_in 'comment_content', with: 'my new comment'
+end
+
+Then(/^I should see my new comment$/) do
+  within('.comments') do
+    page.should have_content "my new comment"
   end
 end
 

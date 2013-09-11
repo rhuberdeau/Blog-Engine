@@ -11,10 +11,19 @@ end
 
 describe "blog_engine/articles/show" do
   it "displays an article" do
-    assign(:article, double("Article", title: "the blog title", content: "the content", published: true))
+    @article = BlogEngine::Article.create(title: "the blog title", content: "the content", published: true)
+    @comment = @article.comments.build
     render
     expect(rendered).to include("the blog title")
     expect(rendered).to include("the content")
+  end
+  
+  it "displays a comment form" do
+    assign(:article, stub_model(BlogEngine::Article))
+    assign(:comment, stub_model(BlogEngine::Comment))
+    render
+    
+    expect(response).to have_selector("form")
   end
 end
 

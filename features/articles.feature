@@ -15,7 +15,7 @@ Feature: The blog should consists of a list of articles
     Given I visit my blog
     And I click the "New Article" link
     When I fill in the article form
-    And click the "Save" button
+    And I click the "Save" button
     Then I should see my new article
 
   Scenario: Users can edit articles
@@ -24,3 +24,9 @@ Feature: The blog should consists of a list of articles
 		When I click the "Edit" link
 		And I edit my article
 		Then I should see the edited article
+		
+	Scenario: Users can add comments to articles
+	  Given I visit an article
+		And I create a comment
+		When I click the "Save" button
+		Then I should see my new comment

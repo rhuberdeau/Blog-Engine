@@ -9,6 +9,7 @@ module BlogEngine
     
     def show
       @article = Article.find(params[:id])
+      @comment = @article.comments.build
       unless @article.published == true
       	redirect_to('/blog/articles')
       end
