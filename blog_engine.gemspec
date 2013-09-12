@@ -9,13 +9,14 @@ Gem::Specification.new do |s|
   s.version     = BlogEngine::VERSION
   s.authors     = ["Robert Huberdeau"]
   s.email       = ["rhuberdeau@gmail.com"]
-  s.homepage    = "www.github.com/rhuberdeau/Blog-Engine"
+  s.homepage    = "http://www.github.com/rhuberdeau/Blog-Engine"
   s.summary     = "Blog Engine"
   s.description = "Blog Engine."
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
 
   s.add_dependency "rails", "~> 4.0.0"
+  s.add_dependency "rails-bootstrap-markdown"
 
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "rspec-rails"
