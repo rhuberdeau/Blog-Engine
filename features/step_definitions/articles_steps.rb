@@ -3,8 +3,19 @@ Given(/^a list of articles$/) do
   BlogEngine::Article.create(title: "second post", content: "going ok so far", published: false)
 end
 
+Given(/^a user exists$/) do
+  @user = FactoryGirl.create(:user)
+end
+
 When(/^I visit my blog$/) do
   visit '/blog/articles'
+end
+
+Given(/^I sign in$/) do
+  visit '/users/sign_in'
+  fill_in 'user_email', with: @user.email
+  fill_in 'user_password', with: @user.password
+  click_button "Sign in"
 end
 
 Then(/^I should see a list of published articles$/) do
@@ -59,8 +70,8 @@ Then(/^I should see the edited article$/) do
 end
 
 Given(/^I visit an article$/) do
-  article = BlogEngine::Article.first
-  visit blog_engine.article_path(article)
+  visit '/blog/articles'
+  page.click_link "hello world"
 end
 
 Given(/^I create a comment$/) do

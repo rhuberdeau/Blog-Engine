@@ -3,6 +3,9 @@ ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../dummy/config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
+require 'factory_girl'
+FactoryGirl.find_definitions
+require 'devise'
 include ActionView::Helpers::UrlHelper
 
 # Requires supporting ruby files with custom matchers and macros, etc,

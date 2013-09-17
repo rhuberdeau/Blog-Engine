@@ -2,6 +2,7 @@ require_dependency "blog_engine/application_controller"
 
 module BlogEngine
   class ArticlesController < ApplicationController
+    before_filter :authenticate_user!, except: [:index, :show]
     
     def index
       @articles = Article.published
@@ -40,6 +41,13 @@ module BlogEngine
         render action: "edit"
       end
     end
+    
+    def destroy
+      @article = Article.find(params[:id])
+      @article.destroy
+      redirect_to(articles_path, notice: "Article was deleted")
+    end
+    
     
     private
     
