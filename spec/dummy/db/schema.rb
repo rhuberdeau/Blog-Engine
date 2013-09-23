@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130916165118) do
+ActiveRecord::Schema.define(version: 20130922005413) do
 
   create_table "blog_engine_articles", force: true do |t|
     t.string   "title"
@@ -19,6 +19,9 @@ ActiveRecord::Schema.define(version: 20130916165118) do
     t.boolean  "published"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
+    t.text     "summary"
+    t.string   "permalink"
   end
 
   create_table "blog_engine_comments", force: true do |t|

@@ -2,14 +2,14 @@ require_dependency "blog_engine/application_controller"
 
 module BlogEngine
   class ArticlesController < ApplicationController
-    before_filter :authenticate_user!, except: [:index, :show]
+    before_filter :authenticate_user, except: [:index, :show]
     
     def index
       @articles = Article.published
     end
     
     def show
-      @article = Article.find(params[:id])
+      @article = Article.find_by_permalink!(params[:id])
       @comment = @article.comments.build
       unless @article.published == true
       	redirect_to('/blog/articles')
@@ -22,6 +22,7 @@ module BlogEngine
     
     def create
       @article = Article.create(article_params)
+      @article.user_id = current_user.id
       if @article.save
         redirect_to(@article, notice: "Article has been saved")
       else
@@ -30,7 +31,7 @@ module BlogEngine
     end
     
     def edit
-      @article = Article.find(params[:id])
+      @article = Article.find_by_permalink!(params[:id])
     end
     
     def update
@@ -43,16 +44,15 @@ module BlogEngine
     end
     
     def destroy
-      @article = Article.find(params[:id])
+      @article = Article.find_by_permalink!(params[:id])
       @article.destroy
       redirect_to(articles_path, notice: "Article was deleted")
     end
     
-    
     private
     
       def article_params
-        params.require(:article).permit(:title, :content, :published)
+        params.require(:article).permit(:title, :content, :published, :summary, :permalink)
       end
   end
 end

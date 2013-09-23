@@ -8,7 +8,7 @@ module BlogEngine
     end
 
     def create
-      @article = BlogEngine::Article.find(params[:article_id])
+      @article = BlogEngine::Article.find_by_permalink!(params[:article_id])
       @comment = @article.comments.build(comment_params)
       
       if @comment.save

@@ -11,6 +11,8 @@ describe BlogEngine::Article do
   it { should respond_to :title }
   it { should respond_to :content }
   it { should respond_to :published }
+  it { should respond_to :summary }
+  it { should respond_to :user_id }
   it { should be_valid }
   
   describe  "when title is not present" do
@@ -45,5 +47,10 @@ describe BlogEngine::Article do
     end
 
     it { should_not be_valid }
+  end
+  
+  describe "should have perma links" do
+    #@article = BlogEngine::Article.create(title: "my Blog artiCle", content: "this is the content of the article", published: true)
+    #@article.permalink.should eql("my-blog-article")
   end
 end
