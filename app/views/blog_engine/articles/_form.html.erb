@@ -1,26 +1,28 @@
 <%= form_for [blog_engine, @article] do |f| %>
-	<div class="field">
-		<%= f.label :title %><br/>
-		<%= f.text_field :title %>
-	</div>
+  <div class="wel">
+		<div class="field">
+			<%= f.label :title %><br/>
+			<%= f.text_field :title %>
+		</div>
 	
-	<div class="field">
-		<%= f.label :summary %><br/>
-		<%= f.text_area :summary %>
-	</div>
+		<div class="field">
+			<%= f.label :summary %><br/>
+			<%= f.text_area :summary %>
+		</div>
 	
-	<div class="field">
-		<%= f.label :content %><br/>
-		<%= f.text_area :content, class: "wysihtml5" %>
-	</div>
+		<div class="field">
+			<%= f.label :content %><br/>
+			<%= f.text_area :content, class: "wysihtml5" %>
+		</div>
 	
-	<div class="field">
-		<%= f.label :published %>
-		<%= f.check_box :published %>
-	</div>
+		<div class="field">
+			<%= f.label :published %>
+			<%= f.check_box :published %>
+		</div>
 	
-	<div class="actions">
-	  <%= f.submit 'Save', class: "btn btn-large btn-primary" %>
+		<div class="actions">
+		  <%= f.submit 'Save', class: "btn btn-large btn-primary" %>
+		</div>
 	</div>
 <% end %>
 

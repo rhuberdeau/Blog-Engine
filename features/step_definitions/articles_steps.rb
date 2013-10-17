@@ -12,7 +12,7 @@ When(/^I visit my blog$/) do
 end
 
 Given(/^I sign in$/) do
-  visit '/users/sign_in'
+  visit '/signin'
   fill_in 'user_email', with: @user.email
   fill_in 'user_password', with: @user.password
   click_button "Sign in"

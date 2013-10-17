@@ -32,26 +32,26 @@ describe BlogEngine::ArticlesController do
     it "cannot create articles" do
       get 'new', use_route: 'blog_engine'
 
-      expect(response).to redirect_to('/users/sign_in')
+      expect(response).to redirect_to('/signin')
     end
     
     it "cannot edit articles" do
       @article = BlogEngine::Article.create!(title: "hello creul world", content: "how are you", published: true)
       get 'edit', id: @article.to_param, use_route: 'blog_engine'
 
-      expect(response).to redirect_to('/users/sign_in')
+      expect(response).to redirect_to('/signin')
     end
     
     it "cannot post to the edit path" do
       post :create, :article => {title: 'hello there', content: "my content"}, use_route: 'blog_engine'
       
-      expect(response).to redirect_to('/users/sign_in')
+      expect(response).to redirect_to('/signin')
     end
     
     it "cannot post to the create path" do
       post :create, :article => {title: 'hello there', content: "my content"}, use_route: 'blog_engine'
       
-      expect(response).to redirect_to('/users/sign_in')
+      expect(response).to redirect_to('/signin')
     end
     
     it "responds successfully" do

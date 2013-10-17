@@ -3,6 +3,6 @@ class BlogEngine::ApplicationController < ApplicationController
   
   private  
     def authenticate_user
-      redirect_to ('/users/sign_in') unless current_user
+      redirect_to ('/signin') unless current_user
     end 
 end

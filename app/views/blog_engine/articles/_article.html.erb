@@ -1,5 +1,6 @@
-<h2><%=link_to "#{article.title}", blog_engine.article_path(article) %></h2>
+<h1><%= link_to "#{article.title}", article %></h1>
+<p><%= article.content.truncate(500).html_safe %></p>
+<div>
+  <span class="badge">Posted <%= article.created_at.strftime("%B %d, %Y") %></span>
 
-<p>
-	<%= article.content %>
-</p>
+</div>
