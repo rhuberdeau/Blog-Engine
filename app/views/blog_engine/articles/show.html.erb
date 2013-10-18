@@ -6,20 +6,7 @@
 		<%= @article.content.html_safe %>
 	</p>
 </div>
-
-<%= form_for [blog_engine, @article, @comment] do |f| %>
-  <div class="well">
-  	<div class="field">
-			<%= f.label :content %><br/>
-			<%= f.text_area :content %>
-		</div>
-	
-		<div class="actions">
-		  <%= f.submit 'Save', class: "btn btn-large btn-primary" %>
-		</div>
-	</div>
-<% end %>
 	
 <div class="comments">	
-	<%= render @article.comments %>
+	<%= render :partial => "shared/disqus", :locals => { title: @article.title } %>
 </div>

@@ -24,15 +24,6 @@ describe "articles" do
   context "not signed in" do
     before do
       @article = FactoryGirl.create(:article, title: "this is a brand new post", content: "what have things come to?")
-      @comment = FactoryGirl.create(:comment, content: "What a wonderful blog", article_id: @article.id)
-    end
-    it "cannot create comments" do
-      visit '/blog/articles'
-      click_link @article.title
-      fill_in 'comment_content', with: 'my new comment'
-      click_button 'Save'
-      page.should_not have_content "Your comment has been created"
-      page.should have_field 'user_email'
     end
   end
 end
