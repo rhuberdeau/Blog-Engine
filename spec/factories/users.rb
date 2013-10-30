@@ -5,12 +5,8 @@ FactoryGirl.define do
     password_confirmation "password"
   end
   factory :article, class: BlogEngine::Article do
-    title  "my really awesome blog post"
+    sequence(:title)  { |n| "really awesome blog post number #{n}"}
     content "I'm a little light on content"
     published "true"
-  end
-  factory :comment, class: BlogEngine::Comment do
-    content "foo bar and what not"
-    article_id 1
   end
 end

@@ -1,7 +1,8 @@
 module BlogEngine
   class Article < ActiveRecord::Base
     has_many :comments
-    scope :published, -> { where(published: true) }
+    scope :published,   -> { where(published: true) }
+    scope :unpublished, -> { where(published: false) }
     
     VALID_TITLE_REGEX = /\A[a-zA-Z\s\d]+\z/i
 

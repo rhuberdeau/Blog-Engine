@@ -1,8 +1,9 @@
 BlogEngine::Engine.routes.draw do
-  get "comments/show"
-  get "comments/create"
   resources :articles do
-    resources :comments
+    collection do
+      put :publish
+    end
   end
+  get '/admin', to: "admin#index"
   root to: "articles#index"
 end

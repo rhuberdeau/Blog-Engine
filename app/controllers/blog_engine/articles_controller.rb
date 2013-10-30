@@ -10,7 +10,6 @@ module BlogEngine
     
     def show
       @article = Article.find_by_permalink!(params[:id])
-      @comment = @article.comments.build
       unless @article.published == true
       	redirect_to('/blog/articles')
       end
@@ -41,6 +40,11 @@ module BlogEngine
       else
         render action: "edit"
       end
+    end
+    
+    def publish
+      Article.update_all({published: true}, {id: params[:article_ids]})
+      redirect_to(admin_path, notice: "Published")
     end
     
     def destroy

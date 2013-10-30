@@ -1,5 +1,7 @@
 <div class="article">
-	<%=link_to "Edit", blog_engine.edit_article_path(@article) %>
+	<% if current_user %>
+	  <%=link_to "Edit", blog_engine.edit_article_path(@article) %>
+	<% end %>
 	<h1><%= @article.title%></h1>
 
 	<p>

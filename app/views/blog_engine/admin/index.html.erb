@@ -1,0 +1,16 @@
+<h1>Admin Page</h1>
+<%= form_tag publish_articles_path, method: :put do %>
+	<table>
+		<tr>
+			<th>Published</th>
+			<th>Title</th>
+		</tr>
+		<% @articles.each do |article| %>
+			<tr class="unpublished-article">
+				<td><%= check_box_tag article.id, "article_ids[]", false, class: "publish"  %></td>
+				<td><%= article.title %></td>
+			</tr>
+	  <% end %>
+	</table>
+	<%= submit_tag "Publish Articles" %>
+<% end %>

@@ -1,2 +1,4 @@
 <%= render @articles %>
-<%= link_to 'New Article', blog_engine.new_article_path %>
+<% if current_user %>
+  <%= link_to 'New Article', blog_engine.new_article_path %>
+<% end %>
