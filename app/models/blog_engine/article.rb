@@ -1,6 +1,5 @@
 module BlogEngine
   class Article < ActiveRecord::Base
-    has_many :comments
     scope :published,   -> { where(published: true) }
     scope :unpublished, -> { where(published: false) }
     
@@ -15,6 +14,7 @@ module BlogEngine
     validates_presence_of :content
     
     before_create :create_permalink
+    
     
     def to_param
       permalink

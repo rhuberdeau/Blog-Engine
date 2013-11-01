@@ -7,7 +7,7 @@
 		</tr>
 		<% @articles.each do |article| %>
 			<tr class="unpublished-article">
-				<td><%= check_box_tag article.id, "article_ids[]", false, class: "publish"  %></td>
+				<td><%= check_box_tag "article_ids[]", article.id, false, class: "publish"  %></td>
 				<td><%= article.title %></td>
 			</tr>
 	  <% end %>

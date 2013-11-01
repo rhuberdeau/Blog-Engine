@@ -6,6 +6,7 @@ require 'rspec/autorun'
 require 'factory_girl'
 FactoryGirl.find_definitions
 require 'devise'
+#require 'kaminari'
 include ActionView::Helpers::UrlHelper
 
 # Requires supporting ruby files with custom matchers and macros, etc,

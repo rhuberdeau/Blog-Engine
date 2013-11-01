@@ -1,5 +1,5 @@
 module BlogEngine
   class Comment < ActiveRecord::Base
-    belongs_to :article
+    #using disqus for comments
   end
 end

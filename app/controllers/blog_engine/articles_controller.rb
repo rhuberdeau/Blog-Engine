@@ -5,7 +5,7 @@ module BlogEngine
     before_filter :authenticate_user, except: [:index, :show]
     
     def index
-      @articles = Article.published
+      @articles = Article.published.order("created_at DESC").page(params[:page]).per(5)
     end
     
     def show

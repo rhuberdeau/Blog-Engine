@@ -35,3 +35,12 @@ Feature: The blog should consists of a list of articles
 	  When I click the "Publish Articles" button
 	  Then I should see "Published"
 	  And I should not see any unpublished articles
+	
+	Scenario: Blog articles should be paginated
+	  Given I have 2 pages of articles 
+		When I visit my blog
+	  Then I should see pagination links
+		And I should only see page 1 of the articles
+		
+		When I click the "2" link
+		Then I should see page 2 of the articles

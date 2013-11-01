@@ -95,11 +95,31 @@ end
 
 Given(/^I check all the unpublished articles$/) do
   page.all('.publish').length.should eq(2)
-  page.all('.publish').each { |ch| check(ch[:id])}
+  page.all("input[type='checkbox']").each { |box| box.set(true) }
 end
 
 Then(/^I should not see any unpublished articles$/) do
   page.should have_css('h1', text: 'Admin Page')
   page.all('.publish').length.should eq(0)
+end
+
+Given(/^I have (\d+) pages of articles$/) do |number_of_pages|
+  number_of_pages = number_of_pages.to_i * 5
+  number_of_pages.times do
+    
+  end
+end
+
+Then(/^I should see pagination links$/) do
+  page.should have_link("1")
+  page.should have_link("2")
+end
+
+Then(/^I should only see page (\d+) of the articles$/) do |page_number|
+  pending # express the regexp above with the code you wish you had
+end
+
+Then(/^I should see page (\d+) of the articles$/) do |arg1|
+  pending # express the regexp above with the code you wish you had
 end
 
