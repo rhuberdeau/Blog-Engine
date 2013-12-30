@@ -6,6 +6,7 @@ require "action_controller/railtie"
 require "action_mailer/railtie"
 require "sprockets/railtie"
 require "devise"
+require "coderay"
 # require "rails/test_unit/railtie"
 
 Bundler.require(*Rails.groups)

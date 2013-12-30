@@ -4,9 +4,9 @@
 	<% end %>
 	<h1><%= @article.title%></h1>
 
-	<p>
-		<%= @article.content.html_safe %>
-	</p>
+	
+	<%= raw Pygments.highlight(@article.content, lexer: "ruby") %>
+	
 </div>
 	
 <div class="comments">	
