@@ -34,10 +34,6 @@ Then(/^I should be redirected to the index$/) do
   page.should_not have_selector('h1', 'hello world')
 end
 
-Given(/^I click the "(.*?)" link$/) do |link_name| 
-  page.click_link link_name
-end
-
 When(/^I fill in the article form$/) do
   page.fill_in 'article_title', with: "my brand new article"
   page.fill_in 'article_content', with: "this is the article content"
@@ -105,8 +101,9 @@ end
 
 Given(/^I have (\d+) pages of articles$/) do |number_of_pages|
   number_of_pages = number_of_pages.to_i * 5
-  number_of_pages.times do
-    
+  expect(number_of_pages).to equal(10)
+  number_of_pages.times do |n|
+    BlogEngine::Article.create(title: "article number #{n}", content: "how are you",     published: true)
   end
 end
 
@@ -121,5 +118,9 @@ end
 
 Then(/^I should see page (\d+) of the articles$/) do |arg1|
   pending # express the regexp above with the code you wish you had
+end
+
+Given(/^I click the "(.*?)" link$/) do |link_name|
+  page.click_link(link_name)
 end
 
